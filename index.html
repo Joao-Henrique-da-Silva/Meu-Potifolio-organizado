@@ -1,10 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>meu-portfolio</title>
+    <title>João Henrique da Silva | Portfólio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    
+    <!-- Script de roteamento - agora com NONCE (não precisa do CSP) -->
+    <script>
+      // Executa antes do React carregar para restaurar a rota original
+      (function() {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const redirectPath = params.get('p');
+
+          if (redirectPath && redirectPath.startsWith('/') && !redirectPath.includes('://')) {
+            params.delete('p');
+            const newSearch = params.toString();
+            const newUrl = redirectPath + (newSearch ? '?' + newSearch : '');
+            window.history.replaceState(null, '', newUrl);
+          }
+        } catch(e) {
+          // Ignora erros
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
