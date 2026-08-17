@@ -12,8 +12,8 @@ export function useGitHubRepos(username = 'Joao-Henrique-da-Silva') {
         return res.json();
       })
       .then((data) => {
-        const filtered = data.filter((repo) => repo.description || repo.name.includes('projeto'));
-        setRepos(filtered);
+        // 🔥 REMOVI O FILTRO - agora mostra TODOS os repositórios
+        setRepos(data);
         setLoading(false);
       })
       .catch((err) => {
