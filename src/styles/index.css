@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cores principais - FRIAS */
+  --color-primary: #0A3B4C;      /* Azul escuro */
+  --color-secondary: #1A6B7A;    /* Azul petróleo médio */
+  --color-accent: #38B2AC;       /* Teal/ciano */
+  --color-beige: #F0F4F8;        /* Cinza azulado claro (fundo) */
+  --color-card-border: #D0DCE8;  /* Cinza azulado para bordas */
+  --color-card-text: #2D3748;    /* Cinza escuro */
+  --color-card-title: #0A3B4C;   /* Azul escuro */
+  --color-footer-bg: #0A2A33;    /* Azul muito escuro */
+  --color-badge-bg: #E2E8F0;     /* Cinza claro */
+  --color-orange: #2B6CB0;       /* Azul médio (substitui laranja) */
+  --color-section-bg: #E8EEF2;   /* Fundo de seções alternadas */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-beige);
+  color: #1A202C;
+}
