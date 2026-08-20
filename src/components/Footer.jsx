@@ -1,12 +1,35 @@
 import { FaHeart } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
 
 export function Footer() {
+  const [isDark, setIsDark] = useState(false);
   const currentYear = new Date().getFullYear();
 
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['class'] 
+    });
+    
+    setIsDark(document.documentElement.classList.contains('dark'));
+    
+    return () => observer.disconnect();
+  }, []);
+
+  // Cores dinâmicas
+  const footerBg = isDark ? 'bg-[#0A0515]' : 'bg-[#5C0000]';
+  const heartColor = isDark ? 'text-[#A78BFA]' : 'text-red-500';
+
   return (
-    <footer className="bg-footer-bg dark:bg-[#0A0515] text-white/80 text-center py-6 text-sm transition-colors duration-300">
+    <footer className={`${footerBg} text-white/80 text-center py-6 text-sm transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto px-6">
-        &copy; {currentYear} João Henrique da Silva · Feito com <FaHeart className="inline text-red-500 dark:text-[#A78BFA] mx-1" /> e React/Tailwind
+        &copy; {currentYear} João Henrique da Silva · Feito com{' '}
+        <FaHeart className={`inline ${heartColor} mx-1 transition-colors duration-300`} />{' '}
+        e React/Tailwind
         <br />
         <small className="opacity-70">Última atualização: abril {currentYear}</small>
       </div>
