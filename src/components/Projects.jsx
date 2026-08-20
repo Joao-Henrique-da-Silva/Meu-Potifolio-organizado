@@ -17,10 +17,10 @@ export function Projects() {
 
   if (loading) {
     return (
-      <section id="projetos" className="py-16 bg-section-bg min-h-100 flex items-center justify-center">
+      <section id="projetos" className="py-16 bg-section-bg dark:bg-[#1A1128] min-h-[400px] flex items-center justify-center transition-colors duration-300">
         <div className="text-center">
-          <div className="animate-spin text-4xl text-secondary">🌀</div>
-          <p className="mt-4 text-primary font-medium">Carregando projetos...</p>
+          <div className="animate-spin text-4xl text-secondary dark:text-[#6C3CB0]">🌀</div>
+          <p className="mt-4 text-primary dark:text-[#A78BFA] font-medium">Carregando projetos...</p>
         </div>
       </section>
     );
@@ -28,8 +28,8 @@ export function Projects() {
 
   if (error) {
     return (
-      <section id="projetos" className="py-16 bg-section-bg">
-        <div className="max-w-6xl mx-auto px-6 text-center text-red-600">
+      <section id="projetos" className="py-16 bg-section-bg dark:bg-[#1A1128] transition-colors duration-300">
+        <div className="max-w-6xl mx-auto px-6 text-center text-red-600 dark:text-red-400">
           <p>Erro ao carregar projetos: {error}</p>
         </div>
       </section>
@@ -37,11 +37,11 @@ export function Projects() {
   }
 
   return (
-    <section id="projetos" className="py-16 bg-section-bg">
+    <section id="projetos" className="py-16 bg-section-bg dark:bg-[#1A1128] transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-primary text-center mb-10 relative">
+        <h2 className="text-3xl font-bold text-primary dark:text-[#A78BFA] text-center mb-10 relative">
           Meus Projetos no GitHub
-          <span className="block w-12 h-1 bg-secondary mx-auto mt-2 rounded"></span>
+          <span className="block w-12 h-1 bg-secondary dark:bg-[#6C3CB0] mx-auto mt-2 rounded"></span>
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mb-8">
@@ -50,14 +50,16 @@ export function Projects() {
             placeholder="🔍 Buscar por nome..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full sm:w-64 px-4 py-2 rounded-xl border border-card-border 
-                       focus:outline-none focus:border-secondary bg-white"
+            className="w-full sm:w-64 px-4 py-2 rounded-xl border border-card-border dark:border-[#3D2A6B] 
+                       focus:outline-none focus:border-secondary dark:focus:border-[#6C3CB0] 
+                       bg-white dark:bg-[#1A1128] text-card-text dark:text-gray-200 transition-colors"
           />
           <select
             value={filterLang}
             onChange={(e) => setFilterLang(e.target.value)}
-            className="w-full sm:w-48 px-4 py-2 rounded-xl border border-card-border 
-                       focus:outline-none focus:border-secondary bg-white"
+            className="w-full sm:w-48 px-4 py-2 rounded-xl border border-card-border dark:border-[#3D2A6B] 
+                       focus:outline-none focus:border-secondary dark:focus:border-[#6C3CB0] 
+                       bg-white dark:bg-[#1A1128] text-card-text dark:text-gray-200 transition-colors"
           >
             {languages.map((lang) => (
               <option key={lang} value={lang}>
@@ -74,7 +76,7 @@ export function Projects() {
         </div>
 
         {filteredRepos.length === 0 && (
-          <p className="text-center text-[#7a4a3a] mt-10">Nenhum projeto encontrado.</p>
+          <p className="text-center text-[#7a4a3a] dark:text-gray-400 mt-10">Nenhum projeto encontrado.</p>
         )}
       </div>
     </section>

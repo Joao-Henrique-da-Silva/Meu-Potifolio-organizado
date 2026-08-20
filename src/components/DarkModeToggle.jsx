@@ -3,15 +3,12 @@ import { FaSun, FaMoon } from 'react-icons/fa';
 
 export function DarkModeToggle() {
   const [isDark, setIsDark] = useState(() => {
-    // Verifica se o usuário já tinha uma preferência salva
     const saved = localStorage.getItem('theme');
     if (saved) return saved === 'dark';
-    // Se não tiver salvo, usa a preferência do sistema
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
   useEffect(() => {
-    // Aplica ou remove a classe 'dark' no html
     if (isDark) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -24,10 +21,14 @@ export function DarkModeToggle() {
   return (
     <button
       onClick={() => setIsDark(!isDark)}
-      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+      className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 transition-all text-white hover:scale-110"
       aria-label="Alternar tema"
     >
-      {isDark ? <FaSun className="text-yellow-400" /> : <FaMoon />}
+      {isDark ? (
+        <FaSun className="text-yellow-400 text-lg" />
+      ) : (
+        <FaMoon className="text-lg" />
+      )}
     </button>
   );
 }

@@ -1,53 +1,94 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0A3B4C;
-  --color-secondary: #1A6B7A;
-  --color-accent: #38B2AC;
-  --color-beige: #F0F4F8;
-  --color-card-border: #D0DCE8;
-  --color-card-text: #2D3748;
-  --color-card-title: #0A3B4C;
-  --color-footer-bg: #0A2A33;
-  --color-badge-bg: #E2E8F0;
-  --color-section-bg: #E8EEF2;
+  /* ===== CORES DO MODO CLARO (quentes) ===== */
+  --color-primary: #8B0000;
+  --color-secondary: #CC3300;
+  --color-accent: #FF6B35;
+  --color-beige: #FFF8F5;
+  --color-card-border: #F5E0D8;
+  --color-card-text: #3D2A22;
+  --color-card-title: #5C0000;
+  --color-footer-bg: #5C0000;
+  --color-badge-bg: #FAE6DF;
+  --color-section-bg: #FFF0ED;
+  --color-hero-start: #8B0000;
+  --color-hero-middle: #CC3300;
+  --color-hero-end: #E65C00;
+  --color-hero-highlight: #FFD700;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply bg-beige font-sans text-[#1A202C] transition-colors duration-300;
+    @apply bg-beige font-sans text-[#2C1810] transition-colors duration-300;
   }
-  
-  /* Dark mode */
+
+  /* ===== DARK MODE (roxo/preto) ===== */
   .dark body {
-    @apply bg-gray-950 text-red-800;
+    @apply bg-[#0F0A1A] text-gray-200;
   }
-  
+
   .dark .bg-beige {
-    @apply bg-gray-800;
+    @apply bg-[#0F0A1A];
   }
-  
+
   .dark .bg-section-bg {
-    @apply bg-gray-900/50;
+    @apply bg-[#1A1128];
   }
-  
+
   .dark .bg-white {
-    @apply bg-gray-800;
+    @apply bg-[#1A1128];
   }
-  
+
+  .dark .bg-card-border {
+    @apply border-[#3D2A6B];
+  }
+
   .dark .text-primary {
-    @apply text-black;
+    @apply text-[#A78BFA];
   }
-  
+
   .dark .text-card-text {
-    @apply text-black;
+    @apply text-gray-300;
   }
-  
+
+  .dark .text-card-title {
+    @apply text-[#C4B5FD];
+  }
+
   .dark .border-card-border {
-    @apply border-gray-600;
+    @apply border-[#3D2A6B];
+  }
+
+  .dark .bg-badge-bg {
+    @apply bg-[#2D1B69];
+  }
+
+  .dark .text-secondary {
+    @apply text-[#A78BFA];
+  }
+
+  .dark .bg-gradient-to-r {
+    background-image: linear-gradient(135deg, #1A0A3E 0%, #3D1B6B 50%, #6C3CB0 100%) !important;
+  }
+}
+
+/* Classes utilitárias para o modo escuro */
+@layer utilities {
+  .dark .dark\:bg-card-dark {
+    background-color: #1A1128;
+  }
+  .dark .dark\:border-purple-dark {
+    border-color: #3D2A6B;
+  }
+  .dark .dark\:text-purple-light {
+    color: #A78BFA;
+  }
+  .dark .dark\:text-gray-light {
+    color: #E5E0F0;
   }
 }
