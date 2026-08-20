@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaGithub } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
 
 const contactSchema = z.object({
   name: z.string().min(3, 'Nome deve ter pelo menos 3 caracteres'),
@@ -10,6 +11,23 @@ const contactSchema = z.object({
 });
 
 export function Contact() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['class'] 
+    });
+    
+    setIsDark(document.documentElement.classList.contains('dark'));
+    
+    return () => observer.disconnect();
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -26,70 +44,92 @@ export function Contact() {
     reset();
   };
 
+  // Cores dinâmicas
+  const sectionBg = isDark ? 'bg-[#1A1128]' : 'bg-[#FFF0ED]';
+  const titleColor = isDark ? 'text-[#A78BFA]' : 'text-[#8B0000]';
+  const spanColor = isDark ? 'bg-[#6C3CB0]' : 'bg-[#CC3300]';
+  const textColor = isDark ? 'text-gray-300' : 'text-[#3D2A22]';
+  const iconBg = isDark ? 'bg-[#2D1B69]' : 'bg-[#FAE6DF]';
+  const iconColor = isDark ? 'text-[#A78BFA]' : 'text-[#CC3300]';
+  const inputBg = isDark ? 'bg-[#1A1128]' : 'bg-white';
+  const inputBorder = isDark ? 'border-[#3D2A6B] focus:border-[#6C3CB0]' : 'border-[#F5E0D8] focus:border-[#CC3300]';
+  const inputText = isDark ? 'text-gray-200' : 'text-[#3D2A22]';
+  const btnBg = isDark ? 'bg-[#6C3CB0] hover:bg-[#8B5CF6]' : 'bg-[#8B0000] hover:bg-[#CC3300]';
+  const linkColor = isDark ? 'text-[#A78BFA]' : 'text-[#CC3300]';
+  const errorColor = isDark ? 'text-red-400' : 'text-red-600';
+
   return (
-    <section id="contato" className="py-16 bg-section-bg dark:bg-[#1A1128] transition-colors duration-300">
+    <section id="contato" className={`py-16 ${sectionBg} transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-primary dark:text-[#A78BFA] text-center mb-10 relative">
+        <h2 className={`text-3xl font-bold ${titleColor} text-center mb-10 relative transition-colors duration-300`}>
           Entre em contato
-          <span className="block w-12 h-1 bg-secondary dark:bg-[#6C3CB0] mx-auto mt-2 rounded"></span>
+          <span className={`block w-12 h-1 ${spanColor} mx-auto mt-2 rounded transition-colors duration-300`}></span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-10">
+          {/* Informações de contato */}
           <div className="flex flex-col gap-5">
-            <div className="flex items-center gap-4 text-card-text dark:text-gray-300">
-              <div className="w-10 h-10 bg-badge-bg dark:bg-[#2D1B69] rounded-full flex items-center justify-center text-secondary dark:text-[#A78BFA] text-lg">
+            <div className={`flex items-center gap-4 ${textColor}`}>
+              <div className={`w-10 h-10 ${iconBg} rounded-full flex items-center justify-center ${iconColor} text-lg transition-colors duration-300`}>
                 <FaMapMarkerAlt />
               </div>
-             
+              <span>Rua Tijucas do Sul, 250 – Cocaia, Guarulhos – SP</span>
             </div>
-            <div className="flex items-center gap-4 text-card-text dark:text-gray-300">
-              <div className="w-10 h-10 bg-badge-bg dark:bg-[#2D1B69] rounded-full flex items-center justify-center text-secondary dark:text-[#A78BFA] text-lg">
+
+            <div className={`flex items-center gap-4 ${textColor}`}>
+              <div className={`w-10 h-10 ${iconBg} rounded-full flex items-center justify-center ${iconColor} text-lg transition-colors duration-300`}>
                 <FaPhoneAlt />
               </div>
-              <span>(11) 9 7841-1516</span>
-              <span>(11) 9 5778-0556</span>
+              <div className="flex flex-col">
+                <span>(11) 9 7841-1516</span>
+                <span>(11) 9 5778-0556</span>
+              </div>
             </div>
-            <div className="flex items-center gap-4 text-card-text dark:text-gray-300">
-              <div className="w-10 h-10 bg-badge-bg dark:bg-[#2D1B69] rounded-full flex items-center justify-center text-secondary dark:text-[#A78BFA] text-lg">
+
+            <div className={`flex items-center gap-4 ${textColor}`}>
+              <div className={`w-10 h-10 ${iconBg} rounded-full flex items-center justify-center ${iconColor} text-lg transition-colors duration-300`}>
                 <FaEnvelope />
               </div>
               <span>joaohs22@gmail.com</span>
             </div>
-            <div className="flex items-center gap-4 text-card-text dark:text-gray-300">
-              <div className="w-10 h-10 bg-badge-bg dark:bg-[#2D1B69] rounded-full flex items-center justify-center text-secondary dark:text-[#A78BFA] text-lg">
+
+            <div className={`flex items-center gap-4 ${textColor}`}>
+              <div className={`w-10 h-10 ${iconBg} rounded-full flex items-center justify-center ${iconColor} text-lg transition-colors duration-300`}>
                 <FaGithub />
               </div>
               <a
                 href="https://github.com/Joao-Henrique-da-Silva"
                 target="_blank"
-                className="text-secondary dark:text-[#A78BFA] font-medium hover:underline"
+                rel="noopener noreferrer"
+                className={`${linkColor} font-medium hover:underline transition-colors duration-300`}
               >
                 github.com/Joao-Henrique-da-Silva
               </a>
             </div>
           </div>
 
+          {/* Formulário */}
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
             <div>
               <input
                 {...register('name')}
                 placeholder="Seu nome"
-                className="w-full px-4 py-3 rounded-xl border border-card-border dark:border-[#3D2A6B] 
-                           bg-white dark:bg-[#1A1128] text-card-text dark:text-gray-200
-                           focus:outline-none focus:border-secondary dark:focus:border-[#6C3CB0] transition-colors"
+                className={`w-full px-4 py-3 rounded-xl border ${inputBorder} 
+                           ${inputBg} ${inputText} transition-colors duration-300
+                           focus:outline-none`}
               />
-              {errors.name && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.name.message}</p>}
+              {errors.name && <p className={`${errorColor} text-sm mt-1`}>{errors.name.message}</p>}
             </div>
 
             <div>
               <input
                 {...register('email')}
                 placeholder="Seu e-mail"
-                className="w-full px-4 py-3 rounded-xl border border-card-border dark:border-[#3D2A6B] 
-                           bg-white dark:bg-[#1A1128] text-card-text dark:text-gray-200
-                           focus:outline-none focus:border-secondary dark:focus:border-[#6C3CB0] transition-colors"
+                className={`w-full px-4 py-3 rounded-xl border ${inputBorder} 
+                           ${inputBg} ${inputText} transition-colors duration-300
+                           focus:outline-none`}
               />
-              {errors.email && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.email.message}</p>}
+              {errors.email && <p className={`${errorColor} text-sm mt-1`}>{errors.email.message}</p>}
             </div>
 
             <div>
@@ -97,19 +137,19 @@ export function Contact() {
                 {...register('message')}
                 rows="4"
                 placeholder="Sua mensagem..."
-                className="w-full px-4 py-3 rounded-xl border border-card-border dark:border-[#3D2A6B] 
-                           bg-white dark:bg-[#1A1128] text-card-text dark:text-gray-200
-                           focus:outline-none focus:border-secondary dark:focus:border-[#6C3CB0] transition-colors resize-none"
+                className={`w-full px-4 py-3 rounded-xl border ${inputBorder} 
+                           ${inputBg} ${inputText} transition-colors duration-300
+                           focus:outline-none resize-none`}
               />
-              {errors.message && <p className="text-red-600 dark:text-red-400 text-sm mt-1">{errors.message.message}</p>}
+              {errors.message && <p className={`${errorColor} text-sm mt-1`}>{errors.message.message}</p>}
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-primary dark:bg-[#6C3CB0] text-white px-8 py-3 rounded-full font-semibold 
-                         hover:bg-secondary dark:hover:bg-[#8B5CF6] transition-colors disabled:opacity-70 
-                         flex items-center justify-center gap-2"
+              className={`${btnBg} text-white px-8 py-3 rounded-full font-semibold 
+                         transition-colors disabled:opacity-70 
+                         flex items-center justify-center gap-2`}
             >
               {isSubmitting ? 'Enviando...' : 'Enviar'}
               <span>📨</span>
