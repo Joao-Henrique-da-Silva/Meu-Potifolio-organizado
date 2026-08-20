@@ -4,17 +4,17 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="pt-32 pb-20 text-white text-center transition-colors duration-300"
+      className="pt-32 pb-20 text-white text-center relative transition-colors duration-300"
       style={{
         background: 'linear-gradient(135deg, #8B0000 0%, #CC3300 50%, #E65C00 100%)'
       }}
     >
-      {/* Overlay para o modo escuro (via CSS) */}
-      <div className="absolute inset-0 bg-black/0 dark:bg-black/40 transition-colors duration-300 -z-10"></div>
+      {/* Overlay para o modo escuro - fica sobre o gradiente */}
+      <div className="absolute inset-0 bg-black/0 dark:bg-black/60 transition-colors duration-300"></div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-md">
-          Olá, sou <span className="text-[#FFD700] dark:text-[#A78BFA]">João Henrique</span>
+          Olá, sou <span className="text-[#FFD700] dark:text-[#A78BFA] transition-colors duration-300">João Henrique</span>
         </h1>
         <p className="text-lg md:text-xl opacity-95 max-w-2xl mx-auto mb-8">
           Técnico em Agente Comunitário de Saúde · Graduando em Engenharia da Computação · Full Stack em formação
