@@ -40,11 +40,11 @@
   }
   
   .dark .text-primary {
-    @apply text-white;
+    @apply text-black;
   }
   
   .dark .text-card-text {
-    @apply text-gray-300;
+    @apply text-black;
   }
   
   .dark .border-card-border {
