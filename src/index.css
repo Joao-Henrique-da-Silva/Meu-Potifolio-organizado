@@ -1,3 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cores claras (light mode) */
+  --color-primary: #0A3B4C;
+  --color-secondary: #1A6B7A;
+  --color-accent: #38B2AC;
+  --color-beige: #F0F4F8;
+  --color-card-border: #D0DCE8;
+  --color-card-text: #2D3748;
+  --color-card-title: #0A3B4C;
+  --color-footer-bg: #0A2A33;
+  --color-badge-bg: #E2E8F0;
+
+  /* Cores escuras (dark mode) - serão usadas com a classe .dark */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-beige font-sans text-[#1A202C] transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;

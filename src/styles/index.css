@@ -10,14 +10,44 @@
   --color-card-title: #0A3B4C;
   --color-footer-bg: #0A2A33;
   --color-badge-bg: #E2E8F0;
+  --color-section-bg: #E8EEF2;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--color-beige);
-  color: #1A202C;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-beige font-sans text-[#1A202C] transition-colors duration-300;
+  }
+  
+  /* Dark mode */
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+  
+  .dark .bg-beige {
+    @apply bg-gray-800;
+  }
+  
+  .dark .bg-section-bg {
+    @apply bg-gray-900/50;
+  }
+  
+  .dark .bg-white {
+    @apply bg-gray-800;
+  }
+  
+  .dark .text-primary {
+    @apply text-white;
+  }
+  
+  .dark .text-card-text {
+    @apply text-gray-300;
+  }
+  
+  .dark .border-card-border {
+    @apply border-gray-600;
+  }
 }
