@@ -6,10 +6,10 @@ export function Hero() {
       id="home"
       className="pt-32 pb-20 text-white text-center relative transition-colors duration-300"
       style={{
-        background: 'linear-gradient(135deg, #8B0000 0%, #CC3300 50%, #E65C00 100%)'
+        background: 'var(--hero-gradient, linear-gradient(135deg, #8B0000 0%, #CC3300 50%, #E65C00 100%))'
       }}
     >
-      {/* Overlay para o modo escuro - fica sobre o gradiente */}
+      {/* Overlay para o modo escuro */}
       <div className="absolute inset-0 bg-black/0 dark:bg-black/60 transition-colors duration-300"></div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">

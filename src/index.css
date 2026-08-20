@@ -1,141 +1,217 @@
 @import "tailwindcss";
 
+/* ============================================
+   CORES DO TEMA (Tailwind v4)
+   ============================================ */
 @theme {
-  /* Cores claras (light mode) */
-  --color-primary: #0A3B4C;
-  --color-secondary: #1A6B7A;
-  --color-accent: #38B2AC;
-  --color-beige: #F0F4F8;
-  --color-card-border: #D0DCE8;
-  --color-card-text: #2D3748;
-  --color-card-title: #0A3B4C;
-  --color-footer-bg: #0A2A33;
-  --color-badge-bg: #E2E8F0;
-
-  /* Cores escuras (dark mode) - serão usadas com a classe .dark */
+  /* --- Cores do modo claro --- */
+  --color-primary: #8B0000;
+  --color-secondary: #CC3300;
+  --color-accent: #FF6B35;
+  --color-beige: #FFF8F5;
+  --color-card-border: #F5E0D8;
+  --color-card-text: #3D2A22;
+  --color-card-title: #5C0000;
+  --color-footer-bg: #5C0000;
+  --color-badge-bg: #FAE6DF;
+  --color-section-bg: #FFF0ED;
+  
+  /* --- Cores do modo escuro --- */
+  --color-dark-bg: #0F0A1A;
+  --color-dark-card: #1A1128;
+  --color-dark-border: #3D2A6B;
+  --color-dark-primary: #A78BFA;
+  --color-dark-secondary: #6C3CB0;
+  --color-dark-accent: #8B5CF6;
+  --color-dark-text: #E5E0F0;
+  --color-dark-text-muted: #9CA3AF;
+  --color-dark-badge: #2D1B69;
 }
 
+/* ============================================
+   APLICAÇÃO DOS TEMAS
+   ============================================ */
 @layer base {
+  /* MODO CLARO (padrão) */
+  :root {
+    --bg-body: #FFF8F5;
+    --text-body: #2C1810;
+    --bg-card: #FFFFFF;
+    --bg-section: #FFF0ED;
+    --border-card: #F5E0D8;
+    --color-primary-text: #8B0000;
+    --color-secondary-text: #CC3300;
+    --color-title-text: #5C0000;
+    --color-muted-text: #7a4a3a;
+    --bg-badge: #FAE6DF;
+    --shadow-card: 0 4px 16px rgba(139, 0, 0, 0.06);
+    /* Gradiente do Hero - MODO CLARO */
+    --hero-gradient: linear-gradient(135deg, #8B0000 0%, #CC3300 50%, #E65C00 100%);
+  }
+
+  /* MODO ESCURO (quando a classe .dark está no <html>) */
+  .dark {
+    --bg-body: #0F0A1A;
+    --text-body: #E5E0F0;
+    --bg-card: #1A1128;
+    --bg-section: #1A1128;
+    --border-card: #3D2A6B;
+    --color-primary-text: #A78BFA;
+    --color-secondary-text: #A78BFA;
+    --color-title-text: #C4B5FD;
+    --color-muted-text: #9CA3AF;
+    --bg-badge: #2D1B69;
+    --shadow-card: 0 4px 16px rgba(45, 27, 105, 0.3);
+    /* Gradiente do Hero - MODO ESCURO (roxo/preto) */
+    --hero-gradient: linear-gradient(135deg, #1A0A3E 0%, #3D1B6B 50%, #6C3CB0 100%);
+  }
+
+  /* APLICAÇÃO DAS VARIÁVEIS */
   html {
     scroll-behavior: smooth;
   }
+
   body {
-    @apply bg-beige font-sans text-[#1A202C] transition-colors duration-300;
-  }
-  .dark body {
-    @apply bg-gray-900 text-gray-100;
-  }
-}
-
-
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
+    background-color: var(--bg-body);
+    color: var(--text-body);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+/* ============================================
+   CLASSES UTILITÁRIAS COM VARIÁVEIS CSS
+   ============================================ */
+@layer utilities {
+  .bg-beige {
+    background-color: var(--bg-body);
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  
+  .bg-section-bg {
+    background-color: var(--bg-section);
   }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  
+  .bg-white {
+    background-color: var(--bg-card);
   }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+  
+  .bg-badge-bg {
+    background-color: var(--bg-badge);
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  
+  .border-card-border {
+    border-color: var(--border-card);
+  }
+  
+  .text-primary {
+    color: var(--color-primary-text);
+  }
+  
+  .text-secondary {
+    color: var(--color-secondary-text);
+  }
+  
+  .text-card-title {
+    color: var(--color-title-text);
+  }
+  
+  .text-card-text {
+    color: var(--text-body);
+  }
+  
+  .text-\[\#7a4a3a\] {
+    color: var(--color-muted-text);
+  }
+  
+  .text-\[\#5C0000\] {
+    color: var(--color-title-text);
+  }
+  
+  .text-\[\#8B0000\] {
+    color: var(--color-primary-text);
+  }
+  
+  .shadow-\[0_4px_16px_rgba\(139,0,0,0.06\)\] {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-\[0_4px_16px_rgba\(10,59,76,0.06\)\] {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-\[0_4px_16px_rgba\(139,0,0,0.08\)\] {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-\[0_4px_16px_rgba\(10,59,76,0.08\)\] {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .bg-\[\#FFF8F5\] {
+    background-color: var(--bg-body);
+  }
+  
+  .bg-\[\#FFF0ED\] {
+    background-color: var(--bg-section);
+  }
+  
+  .border-\[\#F5E0D8\] {
+    border-color: var(--border-card);
+  }
+  
+  .bg-\[\#FAE6DF\] {
+    background-color: var(--bg-badge);
+  }
+  
+  .text-\[\#FFD700\] {
+    color: #FFD700;
+  }
+  
+  /* Dark mode override para o destaque do Hero */
+  .dark .text-\[\#FFD700\] {
+    color: #A78BFA;
+  }
+  
+  /* Hero gradient - usa a variável CSS */
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+  
+  /* Overlay do Hero no dark mode */
+  .dark .bg-black\/60 {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Botão do Hero no dark mode */
+  .dark .bg-\[\#FF6B35\] {
+    background-color: #6C3CB0;
+  }
+  
+  .dark .hover\:bg-\[\#FF4500\]:hover {
+    background-color: #8B5CF6 !important;
+  }
+  
+  /* Hover dos ícones sociais no dark mode */
+  .dark .hover\:bg-\[\#FFD700\]\/30:hover {
+    background-color: rgba(167, 139, 250, 0.3) !important;
+  }
+  
+  /* Sombra do botão no dark mode */
+  .dark .shadow-\[\#FF6B35\]\/40 {
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
+  }
+  
+  /* Bordas das seções no dark mode */
+  .dark .border-\[\#F5E0D8\] {
+    border-color: #3D2A6B;
+  }
+  
+  /* Badges no dark mode */
+  .dark .bg-\[\#FAE6DF\] {
+    background-color: #2D1B69;
+  }
+  
+  .dark .text-\[\#8B0000\] {
+    color: #A78BFA;
+  }
 }

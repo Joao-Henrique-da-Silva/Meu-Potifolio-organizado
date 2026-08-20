@@ -24,7 +24,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary/92 dark:bg-[#1A0A3E]/95 backdrop-blur-md shadow-lg py-3.5 transition-colors duration-300">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#8B0000] dark:bg-[#1A0A3E]/95 backdrop-blur-md shadow-lg py-3.5 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
         <div className="text-white font-bold text-xl tracking-tight">
           João<span className="text-[#FFB347] dark:text-[#A78BFA]">Henrique</span>
@@ -56,7 +56,7 @@ export function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-primary/95 dark:bg-[#1A0A3E]/95 px-6 py-5 flex flex-col gap-4 border-t border-white/10">
+        <div className="md:hidden bg-[#8B0000] dark:bg-[#1A0A3E]/95 px-6 py-5 flex flex-col gap-4 border-t border-white/10">
           {links.map((link) => (
             <button
               key={link.id}
