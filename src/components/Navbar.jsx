@@ -39,8 +39,11 @@ export function Navbar() {
     }
   };
 
+  // Fundo do navbar: vermelho no claro, roxo escuro no escuro
+  const navBg = isDark ? 'bg-[#1A0A3E]/95' : 'bg-[#8B0000]';
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#8B0000] dark:bg-[#1A0A3E]/95 backdrop-blur-md shadow-lg py-3.5 transition-colors duration-300">
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${navBg} backdrop-blur-md shadow-lg py-3.5 transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
         <div className="text-white font-bold text-xl tracking-tight">
           João<span className={isDark ? 'text-[#A78BFA]' : 'text-[#FFB347]'}>Henrique</span>
@@ -52,7 +55,9 @@ export function Navbar() {
               <li key={link.id}>
                 <button
                   onClick={() => scrollTo(link.id)}
-                  className="text-white/90 text-sm font-medium hover:text-[#FFB347] dark:hover:text-[#A78BFA] transition-colors"
+                  className={`text-white/90 text-sm font-medium transition-colors ${
+                    isDark ? 'hover:text-[#A78BFA]' : 'hover:text-[#FFB347]'
+                  }`}
                 >
                   {link.label}
                 </button>
@@ -72,12 +77,14 @@ export function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-[#8B0000] dark:bg-[#1A0A3E]/95 px-6 py-5 flex flex-col gap-4 border-t border-white/10">
+        <div className={`md:hidden ${navBg} px-6 py-5 flex flex-col gap-4 border-t border-white/10`}>
           {links.map((link) => (
             <button
               key={link.id}
               onClick={() => scrollTo(link.id)}
-              className="text-white/90 text-left text-sm font-medium hover:text-[#FFB347] dark:hover:text-[#A78BFA] transition-colors"
+              className={`text-white/90 text-left text-sm font-medium transition-colors ${
+                isDark ? 'hover:text-[#A78BFA]' : 'hover:text-[#FFB347]'
+              }`}
             >
               {link.label}
             </button>
