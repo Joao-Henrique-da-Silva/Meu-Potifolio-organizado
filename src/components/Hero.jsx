@@ -1,29 +1,48 @@
 import { FaGithub, FaEnvelope, FaLinkedinIn } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
 
 export function Hero() {
+  const [isDark, setIsDark] = useState(false);
+
+  // Observa mudanças na classe 'dark' no html
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['class'] 
+    });
+    
+    // Estado inicial
+    setIsDark(document.documentElement.classList.contains('dark'));
+    
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="home"
-      className="pt-32 pb-20 text-white text-center relative transition-colors duration-300"
-      style={{
-        background: 'var(--hero-gradient, linear-gradient(135deg, #8B0000 0%, #CC3300 50%, #E65C00 100%))'
-      }}
+      className={`pt-32 pb-20 text-white text-center relative transition-all duration-700 ${
+        isDark ? 'hero-dark' : 'hero-light'
+      }`}
     >
-      {/* Overlay para o modo escuro */}
-      <div className="absolute inset-0 bg-black/0 dark:bg-black/60 transition-colors duration-300"></div>
-      
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-md">
-          Olá, sou <span className="text-[#FFD700] dark:text-[#A78BFA] transition-colors duration-300">João Henrique</span>
+          Olá, sou <span className={isDark ? 'text-[#A78BFA]' : 'text-[#FFD700]'}>João Henrique</span>
         </h1>
         <p className="text-lg md:text-xl opacity-95 max-w-2xl mx-auto mb-8">
           Técnico em Agente Comunitário de Saúde · Graduando em Engenharia da Computação · Full Stack em formação
         </p>
         <a
           href="#contato"
-          className="inline-block bg-[#FF6B35] dark:bg-[#6C3CB0] text-white px-8 py-3 rounded-full font-semibold 
-                     transition-all hover:scale-105 hover:bg-[#FF4500] dark:hover:bg-[#8B5CF6] 
-                     shadow-lg shadow-[#FF6B35]/40 dark:shadow-[#6C3CB0]/40"
+          className={`inline-block text-white px-8 py-3 rounded-full font-semibold 
+                     transition-all hover:scale-105 shadow-lg ${
+                       isDark 
+                         ? 'bg-[#6C3CB0] hover:bg-[#8B5CF6] shadow-[#6C3CB0]/40' 
+                         : 'bg-[#FF6B35] hover:bg-[#FF4500] shadow-[#FF6B35]/40'
+                     }`}
         >
           Vamos conversar
         </a>
@@ -32,27 +51,51 @@ export function Hero() {
             href="https://github.com/Joao-Henrique-da-Silva"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-12 h-12 bg-white/15 rounded-full flex items-center justify-center text-xl 
-                       hover:bg-[#FFD700]/30 dark:hover:bg-[#A78BFA]/30 transition-colors"
+            className={`w-12 h-12 bg-white/15 rounded-full flex items-center justify-center text-xl 
+                       transition-colors ${
+                         isDark 
+                           ? 'hover:bg-[#A78BFA]/30' 
+                           : 'hover:bg-[#FFD700]/30'
+                       }`}
           >
             <FaGithub />
           </a>
           <a
             href="mailto:joaohs22@gmail.com"
-            className="w-12 h-12 bg-white/15 rounded-full flex items-center justify-center text-xl 
-                       hover:bg-[#FFD700]/30 dark:hover:bg-[#A78BFA]/30 transition-colors"
+            className={`w-12 h-12 bg-white/15 rounded-full flex items-center justify-center text-xl 
+                       transition-colors ${
+                         isDark 
+                           ? 'hover:bg-[#A78BFA]/30' 
+                           : 'hover:bg-[#FFD700]/30'
+                       }`}
           >
             <FaEnvelope />
           </a>
           <a
             href="#"
-            className="w-12 h-12 bg-white/15 rounded-full flex items-center justify-center text-xl 
-                       hover:bg-[#FFD700]/30 dark:hover:bg-[#A78BFA]/30 transition-colors"
+            className={`w-12 h-12 bg-white/15 rounded-full flex items-center justify-center text-xl 
+                       transition-colors ${
+                         isDark 
+                           ? 'hover:bg-[#A78BFA]/30' 
+                           : 'hover:bg-[#FFD700]/30'
+                       }`}
           >
             <FaLinkedinIn />
           </a>
         </div>
       </div>
+
+      <style>{`
+        .hero-light {
+          background: linear-gradient(135deg, #8B0000 0%, #CC3300 50%, #E65C00 100%);
+        }
+        .hero-dark {
+          background: linear-gradient(135deg, #1A0A3E 0%, #3D1B6B 50%, #6C3CB0 100%);
+        }
+        .hero-light, .hero-dark {
+          transition: background 0.7s ease;
+        }
+      `}</style>
     </section>
   );
 }
