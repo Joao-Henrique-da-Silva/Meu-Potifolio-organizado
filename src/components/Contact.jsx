@@ -73,7 +73,7 @@ export function Contact() {
               <div className={`w-10 h-10 ${iconBg} rounded-full flex items-center justify-center ${iconColor} text-lg transition-colors duration-300`}>
                 <FaMapMarkerAlt />
               </div>
-              <span>Rua Tijucas do Sul, 250 – Cocaia, Guarulhos – SP</span>
+              <span>Guarulhos – SP</span>
             </div>
 
             <div className={`flex items-center gap-4 ${textColor}`}>
