@@ -40,13 +40,14 @@ export function Contact() {
               <div className="w-10 h-10 bg-badge-bg dark:bg-[#2D1B69] rounded-full flex items-center justify-center text-secondary dark:text-[#A78BFA] text-lg">
                 <FaMapMarkerAlt />
               </div>
-              <span>Rua Tijucas do Sul, 250 – Cocaia, Guarulhos – SP</span>
+             
             </div>
             <div className="flex items-center gap-4 text-card-text dark:text-gray-300">
               <div className="w-10 h-10 bg-badge-bg dark:bg-[#2D1B69] rounded-full flex items-center justify-center text-secondary dark:text-[#A78BFA] text-lg">
                 <FaPhoneAlt />
               </div>
               <span>(11) 9 7841-1516</span>
+              <span>(11) 9 5778-0556</span>
             </div>
             <div className="flex items-center gap-4 text-card-text dark:text-gray-300">
               <div className="w-10 h-10 bg-badge-bg dark:bg-[#2D1B69] rounded-full flex items-center justify-center text-secondary dark:text-[#A78BFA] text-lg">
