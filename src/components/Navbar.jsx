@@ -1,9 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { DarkModeToggle } from './DarkModeToggle';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['class'] 
+    });
+    
+    setIsDark(document.documentElement.classList.contains('dark'));
+    
+    return () => observer.disconnect();
+  }, []);
 
   const links = [
     { id: 'sobre', label: 'Sobre' },
@@ -27,7 +43,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#8B0000] dark:bg-[#1A0A3E]/95 backdrop-blur-md shadow-lg py-3.5 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
         <div className="text-white font-bold text-xl tracking-tight">
-          João<span className="text-[#FFB347] dark:text-[#A78BFA]">Henrique</span>
+          João<span className={isDark ? 'text-[#A78BFA]' : 'text-[#FFB347]'}>Henrique</span>
         </div>
 
         <div className="flex items-center gap-4">

@@ -1,4 +1,23 @@
+import { useState, useEffect } from 'react';
+
 export function About() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['class'] 
+    });
+    
+    setIsDark(document.documentElement.classList.contains('dark'));
+    
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="sobre" className="py-16 bg-beige dark:bg-[#0F0A1A] transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6">
@@ -8,8 +27,14 @@ export function About() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10 items-center">
-          <div className="bg-gradient-to-br from-primary via-secondary to-[#E65C00] dark:from-[#1A0A3E] dark:via-[#3D1B6B] dark:to-[#6C3CB0] rounded-2xl p-8 text-white text-center shadow-xl min-h-[200px] flex flex-col justify-center transition-colors duration-300">
-            <i className="fas fa-user-astronaut text-6xl text-[#FFD700] dark:text-[#A78BFA] mb-4"></i>
+          <div className={`rounded-2xl p-8 text-white text-center shadow-xl min-h-[200px] flex flex-col justify-center transition-colors duration-300 ${
+            isDark 
+              ? 'bg-gradient-to-br from-[#1A0A3E] via-[#3D1B6B] to-[#6C3CB0]' 
+              : 'bg-gradient-to-br from-[#8B0000] via-[#CC3300] to-[#E65C00]'
+          }`}>
+            <i className={`fas fa-user-astronaut text-6xl mb-4 transition-colors duration-300 ${
+              isDark ? 'text-[#A78BFA]' : 'text-[#FFD700]'
+            }`}></i>
             <h3 className="text-2xl font-bold">João Henrique</h3>
             <p className="opacity-90">Full Stack em desenvolvimento</p>
           </div>
