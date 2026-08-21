@@ -58,7 +58,7 @@ export function About() {
               João Henrique
             </h3>
             
-            <p className={`opacity-90 transition-colors duration-300 ${
+            <p className={` text-center opacity-90 transition-colors duration-300 ${
               isDark ? 'text-[#C4B5FD]' : 'text-[#8B6B4A]'
             }`}>
               Full Stack em desenvolvimento
