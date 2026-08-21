@@ -19,12 +19,16 @@ export function Hero() {
     return () => observer.disconnect();
   }, []);
 
+  // Gradiente dinâmico
+  const gradient = isDark
+    ? 'linear-gradient(135deg, #1A0A3E 0%, #3D1B6B 50%, #6C3CB0 100%)'  // Escuro: roxo
+    : 'linear-gradient(135deg, #D96A3A 0%, #E88A5A 50%, #F2B08A 100%)';  // Claro: tons mais suaves
+
   return (
     <section
       id="home"
-      className={`pt-32 pb-20 text-white text-center relative transition-all duration-700 ${
-        isDark ? 'hero-dark' : 'hero-light'
-      }`}
+      className="pt-32 pb-20 text-white text-center relative transition-all duration-700"
+      style={{ background: gradient }}
     >
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-md">
@@ -39,7 +43,7 @@ export function Hero() {
                      transition-all hover:scale-105 shadow-lg ${
                        isDark 
                          ? 'bg-dark-secondary hover:bg-dark-accent shadow-dark-secondary/40' 
-                         : 'bg-accent hover:bg-[#FF4500] shadow-accent/40'
+                         : 'bg-accent hover:bg-[#E0683A] shadow-accent/40'
                      }`}
         >
           Vamos conversar
@@ -82,18 +86,6 @@ export function Hero() {
           </a>
         </div>
       </div>
-
-      <style>{`
-        .hero-light {
-          background: linear-gradient(135deg, #8B0000 0%, #CC3300 50%, #E65C00 100%);
-        }
-        .hero-dark {
-          background: linear-gradient(135deg, #1A0A3E 0%, #3D1B6B 50%, #6C3CB0 100%);
-        }
-        .hero-light, .hero-dark {
-          transition: background 0.7s ease;
-        }
-      `}</style>
     </section>
   );
 }
