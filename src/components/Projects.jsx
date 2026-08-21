@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useGitHubRepos } from '../hooks/useGitHubRepos';
 import { ProjectCard } from './ProjectCard';
 
@@ -6,6 +6,23 @@ export function Projects() {
   const { repos, loading, error } = useGitHubRepos();
   const [search, setSearch] = useState('');
   const [filterLang, setFilterLang] = useState('');
+  const [isDark, setIsDark] = useState(false);
+
+  // Observa mudanças no tema
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    
+    observer.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['class'] 
+    });
+    
+    setIsDark(document.documentElement.classList.contains('dark'));
+    
+    return () => observer.disconnect();
+  }, []);
 
   const languages = ['Todas', ...new Set(repos.map((r) => r.language).filter(Boolean))];
 
@@ -15,9 +32,17 @@ export function Projects() {
     return matchName && matchLang;
   });
 
+  // Cores dinâmicas para os inputs
+  const inputBg = isDark ? 'bg-dark-card' : 'bg-white';
+  const inputBorder = isDark ? 'border-dark-border focus:border-dark-secondary' : 'border-card-border focus:border-secondary';
+  const inputText = isDark ? 'text-dark-text' : 'text-card-text';
+  const inputPlaceholder = isDark ? 'placeholder:text-dark-text-muted' : 'placeholder:text-[#A08070]';
+  const inputRing = isDark ? 'focus:ring-dark-secondary/20' : 'focus:ring-secondary/20';
+  const sectionBg = isDark ? 'bg-dark-card' : 'bg-section-bg';
+
   if (loading) {
     return (
-      <section id="projetos" className="py-16 bg-section-bg dark:bg-dark-card min-h-100 flex items-center justify-center transition-colors duration-300">
+      <section id="projetos" className={`py-16 ${sectionBg} min-h-100 flex items-center justify-center transition-colors duration-300`}>
         <div className="text-center">
           <div className="animate-spin text-4xl text-secondary dark:text-dark-secondary">🌀</div>
           <p className="mt-4 text-primary dark:text-dark-primary font-medium">Carregando projetos...</p>
@@ -28,7 +53,7 @@ export function Projects() {
 
   if (error) {
     return (
-      <section id="projetos" className="py-16 bg-section-bg dark:bg-dark-card transition-colors duration-300">
+      <section id="projetos" className={`py-16 ${sectionBg} transition-colors duration-300`}>
         <div className="max-w-6xl mx-auto px-6 text-center text-red-600 dark:text-red-400">
           <p>Erro ao carregar projetos: {error}</p>
         </div>
@@ -37,7 +62,7 @@ export function Projects() {
   }
 
   return (
-    <section id="projetos" className="py-16 bg-section-bg dark:bg-dark-card transition-colors duration-300">
+    <section id="projetos" className={`py-16 ${sectionBg} transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-primary dark:text-dark-primary text-center mb-10 relative">
           Meus Projetos no GitHub
@@ -51,22 +76,19 @@ export function Projects() {
             placeholder="🔍 Buscar por nome..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full sm:w-64 px-4 py-2.5 rounded-xl border border-card-border dark:border-dark-border 
-                       focus:outline-none focus:border-secondary dark:focus:border-dark-secondary 
-                       focus:ring-2 focus:ring-secondary/20 dark:focus:ring-dark-secondary/20
-                       bg-white dark:bg-dark-card text-card-text dark:text-dark-text 
-                       placeholder:text-[#A08070] dark:placeholder:text-dark-text-muted
-                       transition-all duration-300"
+            className={`w-full sm:w-64 px-4 py-2.5 rounded-xl border ${inputBorder} 
+                       focus:outline-none focus:ring-2 ${inputRing}
+                       ${inputBg} ${inputText} ${inputPlaceholder}
+                       transition-all duration-300`}
           />
 
           <select
             value={filterLang}
             onChange={(e) => setFilterLang(e.target.value)}
-            className="w-full sm:w-48 px-4 py-2.5 rounded-xl border border-card-border dark:border-dark-border 
-                       focus:outline-none focus:border-secondary dark:focus:border-dark-secondary 
-                       focus:ring-2 focus:ring-secondary/20 dark:focus:ring-dark-secondary/20
-                       bg-white dark:bg-dark-card text-card-text dark:text-dark-text 
-                       transition-all duration-300 cursor-pointer"
+            className={`w-full sm:w-48 px-4 py-2.5 rounded-xl border ${inputBorder} 
+                       focus:outline-none focus:ring-2 ${inputRing}
+                       ${inputBg} ${inputText}
+                       transition-all duration-300 cursor-pointer`}
           >
             {languages.map((lang) => (
               <option key={lang} value={lang}>
