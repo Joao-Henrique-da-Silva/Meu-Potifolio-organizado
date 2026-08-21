@@ -32,42 +32,49 @@ export function About() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10 items-center">
-          <div className={`relative flex flex-col items-center gap-3 p-8 rounded-4xl border-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl group ${
-            isDark 
-              ? 'border-[#A78BFA]/30 bg-gradient-to-br from-[#2D1B69]/80 via-[#1A0A3E]/80 to-[#3D1B6B]/80 backdrop-blur-md shadow-[0_8px_32px_rgba(167,139,250,0.15)] hover:shadow-[0_8px_40px_rgba(167,139,250,0.25)]' 
-              : 'border-[#FFD700]/30 bg-gradient-to-br from-[#FFF8F5]/90 via-[#F5E8E0]/90 to-[#E8D5C8]/90 backdrop-blur-md shadow-[0_8px_32px_rgba(255,215,0,0.10)] hover:shadow-[0_8px_40px_rgba(255,215,0,0.20)]'
-          }`}>
-            {/* Efeito de brilho superior */}
-            <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-2xl transition-all duration-500 ${
-              isDark ? 'bg-[#A78BFA]/20 group-hover:bg-[#A78BFA]/30' : 'bg-[#FFD700]/20 group-hover:bg-[#FFD700]/30'
-            }`}></div>
-            
-            <div className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 ${
-              isDark 
-                ? 'bg-[#A78BFA]/20 shadow-[0_0_30px_rgba(167,139,250,0.2)]' 
-                : 'bg-[#FFD700]/20 shadow-[0_0_30px_rgba(255,215,0,0.15)]'
-            }`}>
-              <i className={`fas fa-user-astronaut text-4xl transition-colors duration-300 ${
-                isDark ? 'text-dark-primary' : 'text-[#FFD700]'
-              }`}></i>
-            </div>
-            
-            <h3 className={`text-2xl font-bold transition-colors duration-300 ${
-              isDark ? 'text-white' : 'text-[#5C0000]'
-            }`}>
-              João Henrique
-            </h3>
-            
-            <p className={` text-center opacity-90 transition-colors duration-300 ${
-              isDark ? 'text-[#C4B5FD]' : 'text-[#8B6B4A]'
-            }`}>
-              Full Stack em desenvolvimento
-            </p>
-            
-            <div className={`w-12 h-1 rounded-full mt-2 transition-all duration-300 ${
-              isDark ? 'bg-dark-primary' : 'bg-[#FFD700]'
-            }`}></div>
-          </div>
+
+
+         <div className={`relative flex flex-col items-center gap-3 p-8 rounded-3xl border transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl group
+  ${
+    isDark 
+      ? 'bg-gradient-to-br from-[#1A0A3E]/80 via-[#2D1B69]/80 to-[#3D1B6B]/80 border-white/10 shadow-[0_8px_32px_rgba(167,139,250,0.12)] hover:shadow-[0_8px_40px_rgba(167,139,250,0.25)] backdrop-blur-xl' 
+      : 'bg-gradient-to-br from-[#FFF8F5]/80 via-[#F5E8E0]/80 to-[#E8D5C8]/80 border-white/30 shadow-[0_8px_32px_rgba(255,215,0,0.08)] hover:shadow-[0_8px_40px_rgba(255,215,0,0.18)] backdrop-blur-xl'
+  }`}
+>
+  {/* Efeito de brilho sutil no canto superior direito */}
+  <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-2xl transition-all duration-700 group-hover:scale-150 ${
+    isDark ? 'bg-[#A78BFA]/20' : 'bg-[#FFD700]/20'
+  }`}></div>
+  
+  {/* Ícone com fundo circular e glow */}
+  <div className={`w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 relative z-10 ${
+    isDark 
+      ? 'bg-[#A78BFA]/20 shadow-[0_0_30px_rgba(167,139,250,0.3)]' 
+      : 'bg-[#FFD700]/20 shadow-[0_0_30px_rgba(255,215,0,0.2)]'
+  }`}>
+    <i className={`fas fa-user-astronaut text-4xl transition-colors duration-300 ${
+      isDark ? 'text-dark-primary' : 'text-[#FFD700]'
+    }`}></i>
+  </div>
+  
+  <h3 className={`text-2xl font-bold transition-colors duration-300 relative z-10 ${
+    isDark ? 'text-white' : 'text-[#5C0000]'
+  }`}>
+    João Henrique
+  </h3>
+  
+  <p className={`opacity-90 transition-colors duration-300 relative z-10 ${
+    isDark ? 'text-[#C4B5FD]' : 'text-[#8B6B4A]'
+  }`}>
+    Full Stack em desenvolvimento
+  </p>
+  
+  {/* Linha decorativa inferior com gradiente */}
+  <div className={`w-12 h-1 rounded-full mt-2 transition-all duration-500 group-hover:w-20 ${
+    isDark ? 'bg-gradient-to-r from-[#A78BFA] to-[#6C3CB0]' : 'bg-gradient-to-r from-[#FFD700] to-[#E88A5A]'
+  }`}></div>
+</div>
+
 
           <div className="md:col-span-2 space-y-4 text-card-text dark:text-dark-text">
             <p>
