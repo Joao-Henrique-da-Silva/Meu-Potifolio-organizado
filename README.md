@@ -1,4 +1,4 @@
-# React + Vite
+# 🚀 React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
@@ -7,7 +7,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## 🚀 React Compiler
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
@@ -121,7 +121,7 @@ npm run dev
 # http://localhost:5173/Meu-Potifolio-organizado/
 ```
 
-### Comandos úteis
+### 🚀 Comandos úteis
 
 | Comando | Descrição |
 |---------|-----------|
@@ -154,7 +154,7 @@ As cores são definidas em `src/styles/index.css` usando variáveis CSS:
 }
 ```
 
-### Animações
+### 🚀 Animações
 
 As animações estão em `src/styles/animations.css` e podem ser estendidas facilmente.
 
@@ -209,12 +209,12 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 4. Adicione seu LinkedIn quando estiver pronto.
 5. Faça commit e push:
 
-```bash
+```bash  🚀
 git add README.md
 git commit -m "Adicionando README.md completo"
-git push origin main
+git push origin main  
 ```
 
 ---
 
-O README está pronto e vai deixar seu repositório com cara de **projeto profissional**! 🚀
+ 
