@@ -98,10 +98,16 @@ export function Projects() {
           </select>
         </div>
 
-        {/* Grid de projetos */}
+        {/* Grid de projetos com animação em cascata */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-          {filteredRepos.map((repo) => (
-            <ProjectCard key={repo.id} {...repo} />
+          {filteredRepos.map((repo, index) => (
+            <div 
+              key={repo.id} 
+              className="opacity-0 animate-fade-in"
+              style={{ animationDelay: `${(index % 5 + 1) * 100}ms` }}
+            >
+              <ProjectCard {...repo} />
+            </div>
           ))}
         </div>
 

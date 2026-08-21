@@ -27,8 +27,15 @@ export function About() {
     : 'bg-gradient-to-br from-[#E88A5A] via-[#F0A880] to-[#F5C4A8]';
 
   return (
-    <section id="sobre" className={`py-16 ${sectionBg} transition-colors duration-300`}>
+    <section
+  id="sobre"
+  className={`opacity-0 animate-fade-in delay-200 py-16 ${sectionBg} transition-colors duration-300`}>
+
+
+      
       <div className="max-w-6xl mx-auto px-6">
+        
+        
         <h2 className="text-3xl font-bold text-primary dark:text-dark-primary mb-10 relative inline-block">
           Sobre mim
           <span className="block w-12 h-1 bg-secondary dark:bg-dark-secondary absolute -bottom-2 left-0 rounded"></span>
@@ -58,7 +65,10 @@ export function About() {
             </p>
           </div>
         </div>
+        
+        
       </div>
+      
     </section>
   );
 }

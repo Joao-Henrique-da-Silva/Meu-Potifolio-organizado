@@ -2,7 +2,7 @@ import { FaGithub, FaGlobe } from 'react-icons/fa';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaCode } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 
-export function ProjectCard({ name, description, language, html_url, homepage }) {
+export function ProjectCard({ name, description, language, html_url, homepage, className = '' }) {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export function ProjectCard({ name, description, language, html_url, homepage })
       rel="noopener noreferrer"
       className={`group ${cardBg} rounded-2xl p-6 ${shadow} 
                  border ${cardBorder} transition-all duration-300 
-                 hover:-translate-y-1.5 ${hoverBorder} flex flex-col gap-2`}
+                 hover:-translate-y-1.5 ${hoverBorder} flex flex-col gap-2` }
     >
       {/* Cabeçalho: ícone + linguagem */}
       <div className={`flex justify-between items-center text-sm ${textMuted}`}>
