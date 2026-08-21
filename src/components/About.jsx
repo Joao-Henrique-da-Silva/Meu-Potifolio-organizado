@@ -42,8 +42,8 @@ export function About() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10 items-center">
-          <div className={`${cardGradient} rounded-2xl p-8 text-white text-center shadow-xl min-h-50 flex flex-col justify-center transition-all duration-700`}>
-            <i className={`fas fa-user-astronaut text-6xl mb-4 transition-colors duration-300 ${
+          <div className={`${cardGradient} rounded-2xl p-8 text-white text-center shadow-xl min-h-50 flex flex-col justify-center animate-fade-in transition-all duration-700`}>
+            <i className={`fas fa-user-astronaut text-6xl mb-4  transition-colors duration-300 ${
               isDark ? 'text-dark-primary' : 'text-[#FFD700]'
             }`}></i>
             <h3 className="text-2xl font-bold">João Henrique</h3>
