@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 export function Hero() {
   const [isDark, setIsDark] = useState(false);
 
-  // Observa mudanças na classe 'dark' no html
   useEffect(() => {
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains('dark'));
@@ -15,7 +14,6 @@ export function Hero() {
       attributeFilter: ['class'] 
     });
     
-    // Estado inicial
     setIsDark(document.documentElement.classList.contains('dark'));
     
     return () => observer.disconnect();
@@ -30,7 +28,7 @@ export function Hero() {
     >
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-md">
-          Olá, sou <span className={isDark ? 'text-[#A78BFA]' : 'text-[#FFD700]'}>João Henrique</span>
+          Olá, sou <span className={isDark ? 'text-dark-primary' : 'text-[#FFD700]'}>João Henrique</span>
         </h1>
         <p className="text-lg md:text-xl opacity-95 max-w-2xl mx-auto mb-8">
           Técnico em Agente Comunitário de Saúde · Graduando em Engenharia da Computação · Full Stack em formação
@@ -40,8 +38,8 @@ export function Hero() {
           className={`inline-block text-white px-8 py-3 rounded-full font-semibold 
                      transition-all hover:scale-105 shadow-lg ${
                        isDark 
-                         ? 'bg-[#6C3CB0] hover:bg-[#8B5CF6] shadow-[#6C3CB0]/40' 
-                         : 'bg-[#FF6B35] hover:bg-[#FF4500] shadow-[#FF6B35]/40'
+                         ? 'bg-dark-secondary hover:bg-dark-accent shadow-dark-secondary/40' 
+                         : 'bg-accent hover:bg-[#FF4500] shadow-accent/40'
                      }`}
         >
           Vamos conversar
@@ -54,7 +52,7 @@ export function Hero() {
             className={`w-12 h-12 bg-white/15 rounded-full flex items-center justify-center text-xl 
                        transition-colors ${
                          isDark 
-                           ? 'hover:bg-[#A78BFA]/30' 
+                           ? 'hover:bg-dark-primary/30' 
                            : 'hover:bg-[#FFD700]/30'
                        }`}
           >
@@ -65,7 +63,7 @@ export function Hero() {
             className={`w-12 h-12 bg-white/15 rounded-full flex items-center justify-center text-xl 
                        transition-colors ${
                          isDark 
-                           ? 'hover:bg-[#A78BFA]/30' 
+                           ? 'hover:bg-dark-primary/30' 
                            : 'hover:bg-[#FFD700]/30'
                        }`}
           >
@@ -76,7 +74,7 @@ export function Hero() {
             className={`w-12 h-12 bg-white/15 rounded-full flex items-center justify-center text-xl 
                        transition-colors ${
                          isDark 
-                           ? 'hover:bg-[#A78BFA]/30' 
+                           ? 'hover:bg-dark-primary/30' 
                            : 'hover:bg-[#FFD700]/30'
                        }`}
           >

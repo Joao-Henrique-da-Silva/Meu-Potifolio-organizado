@@ -44,18 +44,17 @@ export function Contact() {
     reset();
   };
 
-  // Cores dinâmicas
-  const sectionBg = isDark ? 'bg-[#1A1128]' : 'bg-[#FFF0ED]';
-  const titleColor = isDark ? 'text-[#A78BFA]' : 'text-[#8B0000]';
-  const spanColor = isDark ? 'bg-[#6C3CB0]' : 'bg-[#CC3300]';
-  const textColor = isDark ? 'text-gray-300' : 'text-[#3D2A22]';
-  const iconBg = isDark ? 'bg-[#2D1B69]' : 'bg-[#FAE6DF]';
-  const iconColor = isDark ? 'text-[#A78BFA]' : 'text-[#CC3300]';
-  const inputBg = isDark ? 'bg-[#1A1128]' : 'bg-white';
-  const inputBorder = isDark ? 'border-[#3D2A6B] focus:border-[#6C3CB0]' : 'border-[#F5E0D8] focus:border-[#CC3300]';
-  const inputText = isDark ? 'text-gray-200' : 'text-[#3D2A22]';
-  const btnBg = isDark ? 'bg-[#6C3CB0] hover:bg-[#8B5CF6]' : 'bg-[#8B0000] hover:bg-[#CC3300]';
-  const linkColor = isDark ? 'text-[#A78BFA]' : 'text-[#CC3300]';
+  const sectionBg = isDark ? 'bg-dark-card' : 'bg-section-bg';
+  const titleColor = isDark ? 'text-dark-primary' : 'text-primary';
+  const spanColor = isDark ? 'bg-dark-secondary' : 'bg-secondary';
+  const textColor = isDark ? 'text-dark-text' : 'text-card-text';
+  const iconBg = isDark ? 'bg-dark-badge' : 'bg-badge-bg';
+  const iconColor = isDark ? 'text-dark-primary' : 'text-secondary';
+  const inputBg = isDark ? 'bg-dark-card' : 'bg-white';
+  const inputBorder = isDark ? 'border-dark-border focus:border-dark-secondary' : 'border-card-border focus:border-secondary';
+  const inputText = isDark ? 'text-dark-text' : 'text-card-text';
+  const btnBg = isDark ? 'bg-dark-secondary hover:bg-[#8B5CF6]' : 'bg-primary hover:bg-secondary';
+  const linkColor = isDark ? 'text-dark-primary' : 'text-secondary';
   const errorColor = isDark ? 'text-red-400' : 'text-red-600';
 
   return (
@@ -67,13 +66,12 @@ export function Contact() {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-10">
-          {/* Informações de contato */}
           <div className="flex flex-col gap-5">
             <div className={`flex items-center gap-4 ${textColor}`}>
               <div className={`w-10 h-10 ${iconBg} rounded-full flex items-center justify-center ${iconColor} text-lg transition-colors duration-300`}>
                 <FaMapMarkerAlt />
               </div>
-              <span>Guarulhos – SP</span>
+              <span>Rua Tijucas do Sul, 250 – Cocaia, Guarulhos – SP</span>
             </div>
 
             <div className={`flex items-center gap-4 ${textColor}`}>
@@ -108,7 +106,6 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Formulário */}
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
             <div>
               <input

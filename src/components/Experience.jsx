@@ -19,19 +19,16 @@ export function Experience() {
     return () => observer.disconnect();
   }, []);
 
-  // Cores dinâmicas
-  const sectionBg = isDark ? 'bg-[#1A1128]' : 'bg-[#FFF0ED]';
-  const titleColor = isDark ? 'text-[#A78BFA]' : 'text-[#8B0000]';
-  const spanColor = isDark ? 'bg-[#6C3CB0]' : 'bg-[#CC3300]';
-  const cardBg = isDark ? 'bg-[#1A1128]' : 'bg-white';
-  const cardBorder = isDark ? 'border-[#6C3CB0]' : 'border-[#CC3300]';
-  const shadow = isDark 
-    ? 'shadow-[0_4px_16px_rgba(45,27,105,0.3)]' 
-    : 'shadow-[0_4px_16px_rgba(139,0,0,0.08)]';
-  const titleCardColor = isDark ? 'text-[#C4B5FD]' : 'text-[#5C0000]';
-  const dateColor = isDark ? 'text-gray-400' : 'text-[#7a4a3a]';
-  const companyColor = isDark ? 'text-[#A78BFA]' : 'text-[#CC3300]';
-  const descColor = isDark ? 'text-gray-300' : 'text-[#3D2A22]';
+  const sectionBg = isDark ? 'bg-dark-card' : 'bg-section-bg';
+  const titleColor = isDark ? 'text-dark-primary' : 'text-primary';
+  const spanColor = isDark ? 'bg-dark-secondary' : 'bg-secondary';
+  const cardBg = isDark ? 'bg-dark-card' : 'bg-white';
+  const cardBorder = isDark ? 'border-dark-secondary' : 'border-secondary';
+  const shadow = isDark ? 'shadow-dark-card' : 'shadow-card';
+  const titleCardColor = isDark ? 'text-dark-primary' : 'text-primary';
+  const dateColor = isDark ? 'text-dark-text-muted' : 'text-[#7a4a3a]';
+  const companyColor = isDark ? 'text-dark-primary' : 'text-secondary';
+  const descColor = isDark ? 'text-dark-text' : 'text-card-text';
 
   return (
     <section id="experiencia" className={`py-16 ${sectionBg} transition-colors duration-300`}>

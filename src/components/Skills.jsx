@@ -33,16 +33,15 @@ export function Skills() {
 
   const softSkills = ['Adaptabilidade', 'Proatividade', 'Trabalho em equipe', 'Organização', 'Fácil aprendizado'];
 
-  // Cores dinâmicas
-  const sectionBg = isDark ? 'bg-[#0F0A1A]' : 'bg-[#FFF8F5]';
-  const titleColor = isDark ? 'text-[#A78BFA]' : 'text-[#8B0000]';
-  const spanColor = isDark ? 'bg-[#6C3CB0]' : 'bg-[#CC3300]';
-  const tagBg = isDark ? 'bg-[#1A1128]' : 'bg-white';
-  const tagBorder = isDark ? 'border-[#3D2A6B]' : 'border-[#F5E0D8]';
-  const tagText = isDark ? 'text-gray-200' : 'text-[#3D2A22]';
+  const sectionBg = isDark ? 'bg-dark-bg' : 'bg-beige';
+  const titleColor = isDark ? 'text-dark-primary' : 'text-primary';
+  const spanColor = isDark ? 'bg-dark-secondary' : 'bg-secondary';
+  const tagBg = isDark ? 'bg-dark-card' : 'bg-white';
+  const tagBorder = isDark ? 'border-dark-border' : 'border-card-border';
+  const tagText = isDark ? 'text-dark-text' : 'text-card-text';
   const tagHover = isDark 
-    ? 'hover:bg-[#6C3CB0] hover:text-white' 
-    : 'hover:bg-[#8B0000] hover:text-white';
+    ? 'hover:bg-dark-secondary hover:text-white' 
+    : 'hover:bg-primary hover:text-white';
 
   return (
     <section id="habilidades" className={`py-16 ${sectionBg} transition-colors duration-300`}>

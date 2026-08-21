@@ -15,20 +15,22 @@ export function Projects() {
     return matchName && matchLang;
   });
 
+  // Estado de loading
   if (loading) {
     return (
-      <section id="projetos" className="py-16 bg-section-bg dark:bg-[#1A1128] min-h-[400px] flex items-center justify-center transition-colors duration-300">
+      <section id="projetos" className="py-16 bg-section-bg dark:bg-dark-card min-h-100 flex items-center justify-center transition-colors duration-300">
         <div className="text-center">
-          <div className="animate-spin text-4xl text-secondary dark:text-[#6C3CB0]">🌀</div>
-          <p className="mt-4 text-primary dark:text-[#A78BFA] font-medium">Carregando projetos...</p>
+          <div className="animate-spin text-4xl text-secondary dark:text-dark-secondary">🌀</div>
+          <p className="mt-4 text-primary dark:text-dark-primary font-medium">Carregando projetos...</p>
         </div>
       </section>
     );
   }
 
+  // Estado de erro
   if (error) {
     return (
-      <section id="projetos" className="py-16 bg-section-bg dark:bg-[#1A1128] transition-colors duration-300">
+      <section id="projetos" className="py-16 bg-section-bg dark:bg-dark-card transition-colors duration-300">
         <div className="max-w-6xl mx-auto px-6 text-center text-red-600 dark:text-red-400">
           <p>Erro ao carregar projetos: {error}</p>
         </div>
@@ -37,29 +39,38 @@ export function Projects() {
   }
 
   return (
-    <section id="projetos" className="py-16 bg-section-bg dark:bg-[#1A1128] transition-colors duration-300">
+    <section id="projetos" className="py-16 bg-section-bg dark:bg-dark-card transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-primary dark:text-[#A78BFA] text-center mb-10 relative">
+        <h2 className="text-3xl font-bold text-primary dark:text-dark-primary text-center mb-10 relative">
           Meus Projetos no GitHub
-          <span className="block w-12 h-1 bg-secondary dark:bg-[#6C3CB0] mx-auto mt-2 rounded"></span>
+          <span className="block w-12 h-1 bg-secondary dark:bg-dark-secondary mx-auto mt-2 rounded transition-colors duration-300"></span>
         </h2>
 
+        {/* === BARRA DE BUSCA E FILTRO === */}
         <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mb-8">
+          {/* Campo de busca por nome */}
           <input
             type="text"
             placeholder="🔍 Buscar por nome..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full sm:w-64 px-4 py-2 rounded-xl border border-card-border dark:border-[#3D2A6B] 
-                       focus:outline-none focus:border-secondary dark:focus:border-[#6C3CB0] 
-                       bg-white dark:bg-[#1A1128] text-card-text dark:text-gray-200 transition-colors"
+            className="w-full sm:w-64 px-4 py-2.5 rounded-xl border border-card-border dark:border-dark-border 
+                       focus:outline-none focus:border-secondary dark:focus:border-dark-secondary 
+                       focus:ring-2 focus:ring-secondary/20 dark:focus:ring-dark-secondary/20
+                       bg-white dark:bg-dark-card text-card-text dark:text-dark-text 
+                       placeholder:text-[#7a4a3a] dark:placeholder:text-dark-text-muted
+                       transition-all duration-300"
           />
+
+          {/* Seletor de filtro por linguagem */}
           <select
             value={filterLang}
             onChange={(e) => setFilterLang(e.target.value)}
-            className="w-full sm:w-48 px-4 py-2 rounded-xl border border-card-border dark:border-[#3D2A6B] 
-                       focus:outline-none focus:border-secondary dark:focus:border-[#6C3CB0] 
-                       bg-white dark:bg-[#1A1128] text-card-text dark:text-gray-200 transition-colors"
+            className="w-full sm:w-48 px-4 py-2.5 rounded-xl border border-card-border dark:border-dark-border 
+                       focus:outline-none focus:border-secondary dark:focus:border-dark-secondary 
+                       focus:ring-2 focus:ring-secondary/20 dark:focus:ring-dark-secondary/20
+                       bg-white dark:bg-dark-card text-card-text dark:text-dark-text 
+                       transition-all duration-300 cursor-pointer"
           >
             {languages.map((lang) => (
               <option key={lang} value={lang}>
@@ -69,14 +80,29 @@ export function Projects() {
           </select>
         </div>
 
+        {/* Grid de projetos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {filteredRepos.map((repo) => (
             <ProjectCard key={repo.id} {...repo} />
           ))}
         </div>
 
+        {/* Mensagem quando não há resultados */}
         {filteredRepos.length === 0 && (
-          <p className="text-center text-[#7a4a3a] dark:text-gray-400 mt-10">Nenhum projeto encontrado.</p>
+          <div className="text-center py-12">
+            <p className="text-[#7a4a3a] dark:text-dark-text-muted">
+              Nenhum projeto encontrado com os filtros atuais.
+            </p>
+            <button
+              onClick={() => {
+                setSearch('');
+                setFilterLang('');
+              }}
+              className="mt-4 text-secondary dark:text-dark-secondary hover:underline transition-colors"
+            >
+              Limpar filtros
+            </button>
+          </div>
         )}
       </div>
     </section>

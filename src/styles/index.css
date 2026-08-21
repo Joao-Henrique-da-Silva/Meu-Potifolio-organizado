@@ -1,10 +1,7 @@
 @import "tailwindcss";
 
-/* ============================================
-   CORES DO TEMA (Tailwind v4)
-   ============================================ */
 @theme {
-  /* --- Cores do modo claro --- */
+  /* Cores do modo claro */
   --color-primary: #8B0000;
   --color-secondary: #CC3300;
   --color-accent: #FF6B35;
@@ -16,7 +13,7 @@
   --color-badge-bg: #FAE6DF;
   --color-section-bg: #FFF0ED;
   
-  /* --- Cores do modo escuro --- */
+  /* Cores do modo escuro */
   --color-dark-bg: #0F0A1A;
   --color-dark-card: #1A1128;
   --color-dark-border: #3D2A6B;
@@ -28,181 +25,113 @@
   --color-dark-badge: #2D1B69;
 }
 
-/* ============================================
-   APLICAÇÃO DOS TEMAS
-   ============================================ */
 @layer base {
-  /* MODO CLARO (padrão) */
-  :root {
-    --bg-body: #FFF8F5;
-    --text-body: #2C1810;
-    --bg-card: #FFFFFF;
-    --bg-section: #FFF0ED;
-    --border-card: #F5E0D8;
-    --color-primary-text: #8B0000;
-    --color-secondary-text: #CC3300;
-    --color-title-text: #5C0000;
-    --color-muted-text: #7a4a3a;
-    --bg-badge: #FAE6DF;
-    --shadow-card: 0 4px 16px rgba(139, 0, 0, 0.06);
-  }
-
-  /* MODO ESCURO (quando a classe .dark está no <html>) */
-  .dark {
-    --bg-body: #0F0A1A;
-    --text-body: #E5E0F0;
-    --bg-card: #1A1128;
-    --bg-section: #1A1128;
-    --border-card: #3D2A6B;
-    --color-primary-text: #A78BFA;
-    --color-secondary-text: #A78BFA;
-    --color-title-text: #C4B5FD;
-    --color-muted-text: #9CA3AF;
-    --bg-badge: #2D1B69;
-    --shadow-card: 0 4px 16px rgba(45, 27, 105, 0.3);
-  }
-
-  /* APLICAÇÃO DAS VARIÁVEIS */
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: var(--bg-body);
-    color: var(--text-body);
+    background-color: var(--color-beige);
+    color: var(--color-card-text);
     font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+
+  .dark body {
+    background-color: var(--color-dark-bg);
+    color: var(--color-dark-text);
+  }
 }
 
-/* ============================================
-   CLASSES UTILITÁRIAS COM VARIÁVEIS CSS
-   ============================================ */
 @layer utilities {
-  .bg-beige {
-    background-color: var(--bg-body);
-  }
-  
+  /* Classes semânticas para os componentes */
   .bg-section-bg {
-    background-color: var(--bg-section);
+    background-color: var(--color-section-bg);
   }
-  
-  .bg-white {
-    background-color: var(--bg-card);
+  .bg-dark-card {
+    background-color: var(--color-dark-card);
   }
-  
+  .bg-dark-bg {
+    background-color: var(--color-dark-bg);
+  }
   .bg-badge-bg {
-    background-color: var(--bg-badge);
+    background-color: var(--color-badge-bg);
   }
-  
-  .border-card-border {
-    border-color: var(--border-card);
+  .bg-dark-badge {
+    background-color: var(--color-dark-badge);
+  }
+  .bg-footer-bg {
+    background-color: var(--color-footer-bg);
   }
   
   .text-primary {
-    color: var(--color-primary-text);
+    color: var(--color-primary);
   }
-  
+  .text-dark-primary {
+    color: var(--color-dark-primary);
+  }
   .text-secondary {
-    color: var(--color-secondary-text);
+    color: var(--color-secondary);
   }
-  
-  .text-card-title {
-    color: var(--color-title-text);
+  .text-dark-secondary {
+    color: var(--color-dark-secondary);
   }
-  
   .text-card-text {
-    color: var(--text-body);
+    color: var(--color-card-text);
+  }
+  .text-card-title {
+    color: var(--color-card-title);
+  }
+  .text-dark-text {
+    color: var(--color-dark-text);
+  }
+  .text-dark-text-muted {
+    color: var(--color-dark-text-muted);
   }
   
-  .text-\[\#7a4a3a\] {
-    color: var(--color-muted-text);
+  .border-card-border {
+    border-color: var(--color-card-border);
+  }
+  .border-dark-border {
+    border-color: var(--color-dark-border);
   }
   
-  .text-\[\#5C0000\] {
-    color: var(--color-title-text);
+  .shadow-card {
+    box-shadow: 0 4px 16px rgba(139, 0, 0, 0.06);
   }
-  
-  .text-\[\#8B0000\] {
-    color: var(--color-primary-text);
+  .shadow-dark-card {
+    box-shadow: 0 4px 16px rgba(45, 27, 105, 0.3);
   }
-  
-  .shadow-\[0_4px_16px_rgba\(139,0,0,0.06\)\] {
-    box-shadow: var(--shadow-card);
+
+  /* Dark mode para classes específicas */
+  .dark .bg-beige {
+    background-color: var(--color-dark-bg);
   }
-  
-  .shadow-\[0_4px_16px_rgba\(10,59,76,0.06\)\] {
-    box-shadow: var(--shadow-card);
+  .dark .bg-section-bg {
+    background-color: var(--color-dark-card);
   }
-  
-  .shadow-\[0_4px_16px_rgba\(139,0,0,0.08\)\] {
-    box-shadow: var(--shadow-card);
+  .dark .bg-white {
+    background-color: var(--color-dark-card);
   }
-  
-  .shadow-\[0_4px_16px_rgba\(10,59,76,0.08\)\] {
-    box-shadow: var(--shadow-card);
+  .dark .border-card-border {
+    border-color: var(--color-dark-border);
   }
-  
-  .bg-\[\#FFF8F5\] {
-    background-color: var(--bg-body);
+  .dark .text-primary {
+    color: var(--color-dark-primary);
   }
-  
-  .bg-\[\#FFF0ED\] {
-    background-color: var(--bg-section);
+  .dark .text-secondary {
+    color: var(--color-dark-secondary);
   }
-  
-  .border-\[\#F5E0D8\] {
-    border-color: var(--border-card);
+  .dark .text-card-text {
+    color: var(--color-dark-text);
   }
-  
-  .bg-\[\#FAE6DF\] {
-    background-color: var(--bg-badge);
+  .dark .text-card-title {
+    color: var(--color-dark-primary);
   }
-  
-  .text-\[\#FFD700\] {
-    color: #FFD700;
+  .dark .bg-badge-bg {
+    background-color: var(--color-dark-badge);
   }
-  
-  /* Dark mode override para o destaque do Hero */
-  .dark .text-\[\#FFD700\] {
-    color: #A78BFA;
-  }
-  
-  /* Hero gradient + overlay */
-  .dark .bg-black\/60 {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-  
-  /* Botão do Hero no dark mode */
-  .dark .bg-\[\#FF6B35\] {
-    background-color: #6C3CB0;
-  }
-  
-  .dark .hover\:bg-\[\#FF4500\]:hover {
-    background-color: #8B5CF6 !important;
-  }
-  
-  /* Hover dos ícones sociais no dark mode */
-  .dark .hover\:bg-\[\#FFD700\]\/30:hover {
-    background-color: rgba(167, 139, 250, 0.3) !important;
-  }
-  
-  /* Sombra do botão no dark mode */
-  .dark .shadow-\[\#FF6B35\]\/40 {
-    box-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
-  }
-  
-  /* Bordas das seções no dark mode */
-  .dark .border-\[\#F5E0D8\] {
-    border-color: #3D2A6B;
-  }
-  
-  /* Badges no dark mode */
-  .dark .bg-\[\#FAE6DF\] {
-    background-color: #2D1B69;
-  }
-  
-  .dark .text-\[\#8B0000\] {
-    color: #A78BFA;
+  .dark .bg-footer-bg {
+    background-color: var(--color-dark-bg);
   }
 }

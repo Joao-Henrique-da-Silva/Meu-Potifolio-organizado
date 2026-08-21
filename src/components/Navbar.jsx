@@ -39,14 +39,13 @@ export function Navbar() {
     }
   };
 
-  // Fundo do navbar: vermelho no claro, roxo escuro no escuro
-  const navBg = isDark ? 'bg-[#1A0A3E]/95' : 'bg-[#8B0000]';
+  const navBg = isDark ? 'bg-dark-bg/95' : 'bg-[#8B0000]';
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 ${navBg} backdrop-blur-md shadow-lg py-3.5 transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
         <div className="text-white font-bold text-xl tracking-tight">
-          João<span className={isDark ? 'text-[#A78BFA]' : 'text-[#FFB347]'}>Henrique</span>
+          João<span className={isDark ? 'text-dark-primary' : 'text-[#FFB347]'}>Henrique</span>
         </div>
 
         <div className="flex items-center gap-4">
@@ -56,7 +55,7 @@ export function Navbar() {
                 <button
                   onClick={() => scrollTo(link.id)}
                   className={`text-white/90 text-sm font-medium transition-colors ${
-                    isDark ? 'hover:text-[#A78BFA]' : 'hover:text-[#FFB347]'
+                    isDark ? 'hover:text-dark-primary' : 'hover:text-[#FFB347]'
                   }`}
                 >
                   {link.label}
@@ -83,7 +82,7 @@ export function Navbar() {
               key={link.id}
               onClick={() => scrollTo(link.id)}
               className={`text-white/90 text-left text-sm font-medium transition-colors ${
-                isDark ? 'hover:text-[#A78BFA]' : 'hover:text-[#FFB347]'
+                isDark ? 'hover:text-dark-primary' : 'hover:text-[#FFB347]'
               }`}
             >
               {link.label}

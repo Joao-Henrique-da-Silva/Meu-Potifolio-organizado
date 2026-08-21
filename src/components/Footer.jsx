@@ -20,9 +20,8 @@ export function Footer() {
     return () => observer.disconnect();
   }, []);
 
-  // Cores dinâmicas
-  const footerBg = isDark ? 'bg-[#0A0515]' : 'bg-[#5C0000]';
-  const heartColor = isDark ? 'text-[#A78BFA]' : 'text-red-500';
+  const footerBg = isDark ? 'bg-dark-bg' : 'bg-footer-bg';
+  const heartColor = isDark ? 'text-dark-primary' : 'text-red-500';
 
   return (
     <footer className={`${footerBg} text-white/80 text-center py-6 text-sm transition-colors duration-300`}>
