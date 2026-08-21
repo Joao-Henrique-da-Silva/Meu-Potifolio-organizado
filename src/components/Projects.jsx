@@ -46,7 +46,6 @@ export function Projects() {
 
         {/* === BARRA DE BUSCA E FILTRO === */}
         <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mb-8">
-          {/* Campo de busca por nome */}
           <input
             type="text"
             placeholder="🔍 Buscar por nome..."
@@ -56,11 +55,10 @@ export function Projects() {
                        focus:outline-none focus:border-secondary dark:focus:border-dark-secondary 
                        focus:ring-2 focus:ring-secondary/20 dark:focus:ring-dark-secondary/20
                        bg-white dark:bg-dark-card text-card-text dark:text-dark-text 
-                       placeholder:text-[#7a4a3a] dark:placeholder:text-dark-text-muted
+                       placeholder:text-[#A08070] dark:placeholder:text-dark-text-muted
                        transition-all duration-300"
           />
 
-          {/* Seletor de filtro por linguagem */}
           <select
             value={filterLang}
             onChange={(e) => setFilterLang(e.target.value)}
@@ -85,10 +83,9 @@ export function Projects() {
           ))}
         </div>
 
-        {/* Mensagem quando não há resultados */}
         {filteredRepos.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-[#7a4a3a] dark:text-dark-text-muted">
+            <p className="text-[#A08070] dark:text-dark-text-muted">
               Nenhum projeto encontrado com os filtros atuais.
             </p>
             <button
