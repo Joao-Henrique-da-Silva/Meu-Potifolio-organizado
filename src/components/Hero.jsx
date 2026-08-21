@@ -31,7 +31,7 @@ export function Hero() {
       style={{ background: gradient }}
     >
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-md">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-md  opacity-0 animate-fade-in delay-200">
           Olá, sou <span className={isDark ? 'text-dark-primary' : 'text-[#FFD700]'}>João Henrique</span>
         </h1>
         <p className="text-lg md:text-xl opacity-95 max-w-2xl mx-auto mb-8">
