@@ -22,7 +22,7 @@ export function Hero() {
   // Gradiente dinâmico
   const gradient = isDark
     ? 'linear-gradient(135deg, #1A0A3E 0%, #3D1B6B 50%, #6C3CB0 100%)'  // Escuro: roxo
-    : 'bg-gradient-to-br from-[#F5ECE0] via-[#E8D5C8] to-[#D5C0B0]';  // Claro: tons mais suaves
+    : 'bg-gradient-to-br from-[#8B0000] via-[#CC5544] to-[#F0E0D8]';  // Claro: tons mais suaves
 
   return (
     <section
