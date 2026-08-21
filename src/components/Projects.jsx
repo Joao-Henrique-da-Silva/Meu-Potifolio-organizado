@@ -15,7 +15,6 @@ export function Projects() {
     return matchName && matchLang;
   });
 
-  // Estado de loading
   if (loading) {
     return (
       <section id="projetos" className="py-16 bg-section-bg dark:bg-dark-card min-h-100 flex items-center justify-center transition-colors duration-300">
@@ -27,7 +26,6 @@ export function Projects() {
     );
   }
 
-  // Estado de erro
   if (error) {
     return (
       <section id="projetos" className="py-16 bg-section-bg dark:bg-dark-card transition-colors duration-300">

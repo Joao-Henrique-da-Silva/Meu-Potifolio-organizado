@@ -53,6 +53,7 @@ export function Contact() {
   const inputBg = isDark ? 'bg-dark-card' : 'bg-white';
   const inputBorder = isDark ? 'border-dark-border focus:border-dark-secondary' : 'border-card-border focus:border-secondary';
   const inputText = isDark ? 'text-dark-text' : 'text-card-text';
+  const inputPlaceholder = isDark ? 'placeholder:text-dark-text-muted' : 'placeholder:text-[#7a4a3a]';
   const btnBg = isDark ? 'bg-dark-secondary hover:bg-[#8B5CF6]' : 'bg-primary hover:bg-secondary';
   const linkColor = isDark ? 'text-dark-primary' : 'text-secondary';
   const errorColor = isDark ? 'text-red-400' : 'text-red-600';
@@ -112,8 +113,8 @@ export function Contact() {
                 {...register('name')}
                 placeholder="Seu nome"
                 className={`w-full px-4 py-3 rounded-xl border ${inputBorder} 
-                           ${inputBg} ${inputText} transition-colors duration-300
-                           focus:outline-none`}
+                           ${inputBg} ${inputText} ${inputPlaceholder}
+                           transition-colors duration-300 focus:outline-none`}
               />
               {errors.name && <p className={`${errorColor} text-sm mt-1`}>{errors.name.message}</p>}
             </div>
@@ -123,8 +124,8 @@ export function Contact() {
                 {...register('email')}
                 placeholder="Seu e-mail"
                 className={`w-full px-4 py-3 rounded-xl border ${inputBorder} 
-                           ${inputBg} ${inputText} transition-colors duration-300
-                           focus:outline-none`}
+                           ${inputBg} ${inputText} ${inputPlaceholder}
+                           transition-colors duration-300 focus:outline-none`}
               />
               {errors.email && <p className={`${errorColor} text-sm mt-1`}>{errors.email.message}</p>}
             </div>
@@ -135,8 +136,8 @@ export function Contact() {
                 rows="4"
                 placeholder="Sua mensagem..."
                 className={`w-full px-4 py-3 rounded-xl border ${inputBorder} 
-                           ${inputBg} ${inputText} transition-colors duration-300
-                           focus:outline-none resize-none`}
+                           ${inputBg} ${inputText} ${inputPlaceholder}
+                           transition-colors duration-300 focus:outline-none resize-none`}
               />
               {errors.message && <p className={`${errorColor} text-sm mt-1`}>{errors.message.message}</p>}
             </div>
