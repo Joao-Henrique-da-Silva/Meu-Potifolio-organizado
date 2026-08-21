@@ -18,13 +18,16 @@ export function About() {
     return () => observer.disconnect();
   }, []);
 
-  // Gradiente dinâmico para o card do About
+  // Fundo da seção - dinâmico
+  const sectionBg = isDark ? 'bg-[#0F0A1A]' : 'bg-[#FFF8F5]';
+  
+  // Gradiente do card - dinâmico
   const cardGradient = isDark
-    ? 'bg-gradient-to-br from-[#1A0A3E] via-[#3D1B6B] to-[#6C3CB0]'  // Escuro: roxo
-    : 'bg-gradient-to-br from-[#E88A5A] via-[#F0A880] to-[#F5C4A8]';   // Claro: laranja/coral mais claro
+    ? 'bg-gradient-to-br from-[#1A0A3E] via-[#3D1B6B] to-[#6C3CB0]'
+    : 'bg-gradient-to-br from-[#E88A5A] via-[#F0A880] to-[#F5C4A8]';
 
   return (
-    <section id="sobre" className="py-16 bg-beige dark:bg-white dark:text-bg transition-colors duration-300">
+    <section id="sobre" className={`py-16 ${sectionBg} transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-primary dark:text-dark-primary mb-10 relative inline-block">
           Sobre mim
@@ -32,7 +35,6 @@ export function About() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-10 items-center">
-          {/* Card com gradiente dinâmico */}
           <div className={`${cardGradient} rounded-2xl p-8 text-white text-center shadow-xl min-h-50 flex flex-col justify-center transition-all duration-700`}>
             <i className={`fas fa-user-astronaut text-6xl mb-4 transition-colors duration-300 ${
               isDark ? 'text-dark-primary' : 'text-[#FFD700]'
