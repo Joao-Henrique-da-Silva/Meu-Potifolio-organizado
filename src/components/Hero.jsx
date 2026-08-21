@@ -19,10 +19,10 @@ export function Hero() {
     return () => observer.disconnect();
   }, []);
 
-  // Gradiente dinâmico
+  // Gradiente dinâmico - USANDO APENAS CSS INLINE (sem classes do Tailwind)
   const gradient = isDark
     ? 'linear-gradient(135deg, #1A0A3E 0%, #3D1B6B 50%, #6C3CB0 100%)'  // Escuro: roxo
-    : 'bg-gradient-to-br from-[#8B0000] via-[#CC5544] to-[#F0E0D8]';  // Claro: tons mais suaves
+    : 'linear-gradient(135deg, #8B0000 0%, #CC5544 50%, #F0E0D8 100%)';   // Claro: vermelho -> branco
 
   return (
     <section
