@@ -8,10 +8,12 @@ import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { SEO } from './components/SEO';
 
 function App() {
   return (
     <div>
+      <SEO />
       <Navbar />
       <Hero />
       <About />
