@@ -17,9 +17,6 @@ If you are developing a production application, we recommend using TypeScript wi
 # Meu-Potifolio-organizado
 
 
-
-Aqui está um **README.md** completo e profissional para o seu portfólio. Ele está em português (já que seu projeto é voltado para o mercado brasileiro), com emojis e estrutura clara.
-
 ---
 
 ```markdown
